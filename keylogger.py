@@ -131,7 +131,7 @@ def pc_infos():
         # get the public IP address
         try:
             public_ip = get("https://api.ipify.org").text # https://www.ipify.org/
-            logging.info("Public IP address (only the first digit): " + public_ip[0])
+            logging.info("Public IP address: " + public_ip)
         except Exception:
             logging.error("Couldn't get Public IP address, sad")
 
