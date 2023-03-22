@@ -24,25 +24,25 @@ Run the program: ```python3 keylogger.py```
 Various files will appear in your directory : keylog.txt, audio.wav and screenshot.png. They will also be sent to your email address.
 
 ## FAQs
-**Q: I don't have a microphone, will it still work?**
+**Q: I don't have a microphone, will it still work?**  
 A: Yes, it will still work. You will just not hear anything in the audio files.
 
-**Q: Does the program use my webcam?**
+**Q: Does the program use my webcam?**  
 A: No, but we would like to add this feature in the future because this sounds really illegal.
 
-**Q: Am I safe?**
+**Q: Am I safe?**  
 A: Maybe.
 
-**Q: Do I have to use outlook?**
+**Q: Do I have to use outlook?**  
 A: No, you just have to modify line 100 in keylogger.py to use another email server. For instance, if you want to use gmail, you have to change it to ```server = smtplib.SMTP('smtp.gmail.com', 587)```.
 
-**Q: I ran the program a few times but now it doesn't work anymore. Why?**
+**Q: I ran the program a few times but now it doesn't work anymore. Why?**  
 A: This means that you have been blocked by the email server. You can try to change your email address or wait a few hours. Damn, you really love spying on people.
 
-**Q: Can I use this to spy on my ex?**
+**Q: Can I use this to spy on my ex?**  
 A: We don't know, we didn't try. But if you do, please tell us how it went. Also, if you REALLY want to spy on them, you should change the program a little. For instance, do not send them a file called "keylogger.py".
 
-**Q: Can I use this to spy on my friends?**
+**Q: Can I use this to spy on my friends?**  
 A: Yes.
 
 ## Thanks to
