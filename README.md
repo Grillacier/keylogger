@@ -1,22 +1,26 @@
 # Keylogger
 ***
-A keylogger written in python. It saves pressed keys, system informations, audio from the microphone and takes screenshots. The files are then sent to an email address which must be defined in ![](login.py). The keys are also printed to the console. The program was only tested on Ubuntu 22.04 beacause it worked so we didn't see the point in working more. We are tired students.
+A keylogger written in python. The program was only tested on Ubuntu 22.04 beacause it worked so we didn't see the point in working more. We are tired students.
 
 ## Table of contents
 - [Keylogger](#keylogger)
   - [Table of contents](#table-of-contents)
+  - [General informations](#general-informations)
   - [Disclaimer](#disclaimer)
   - [Installation](#installation)
   - [FAQs](#faqs)
   - [Thanks to](#thanks-to)
 
+## General informations
+It saves pressed keys, system informations, audio from the microphone and takes screenshots. The keys are printed to the console. They are also  sent to an email address which must be defined in login.py. ![inbox](images/mail.png)
+
 ## Disclaimer
 This program is for educational purposes only. We are not responsible for any misuse or damage caused by this program. If you want to use it, you must have the permission of the owner of the computer. If you don't and you get caught, we are not responsible for that either.
 
 ## Installation
-Clone the project: ```git clone https://github.com/Grillacier/keylogger```
-Enter your email address and password in ![](login.py)
-Run the program: ```python3 keylogger.py```
+Clone the project: ```git clone https://github.com/Grillacier/keylogger```  
+Enter your email address and password in login.py  
+Run the program: ```python3 keylogger.py```  
 Various files will appear in your directory : keylog.txt, audio.wav and screenshot.png. They will also be sent to your email address.
 
 ## FAQs
@@ -30,7 +34,7 @@ A: No, but we would like to add this feature in the future because this sounds r
 A: Maybe.
 
 **Q: Do I have to use outlook?**
-A: No, you just have to modify line 100 in ![](keylogger.py) to use another email server. For instance, if you want to use gmail, you have to change it to ```server = smtplib.SMTP('smtp.gmail.com', 587)```.
+A: No, you just have to modify line 100 in keylogger.py to use another email server. For instance, if you want to use gmail, you have to change it to ```server = smtplib.SMTP('smtp.gmail.com', 587)```.
 
 **Q: I ran the program a few times but now it doesn't work anymore. Why?**
 A: This means that you have been blocked by the email server. You can try to change your email address or wait a few hours. Damn, you really love spying on people.
